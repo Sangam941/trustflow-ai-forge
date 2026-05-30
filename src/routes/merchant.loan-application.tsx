@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, ArrowLeft, ArrowRight, Sparkles, Lock, TrendingUp } from "lucide-react";
+import { Check, Sparkles, Lock, TrendingUp } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { formatNPR } from "@/data/mockData";
 import { useScore } from "@/context/ScoreContext";
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/merchant/loan-application")({
   component: LoanApp,
 });
 
-const steps = ["Loan Details", "Documents", "Review"];
+const steps = ["Loan Details"];
 
 function LoanApp() {
   const [step, setStep] = useState(0);
@@ -121,49 +121,15 @@ function LoanApp() {
                     </div>
                   </>
                 )}
-                {step === 1 && (
-                  <div className="space-y-3">
-                    {["Business registration","Citizenship ID","Last 3 months bank statement","Utility bill"].map(d => (
-                      <div key={d} className="flex items-center justify-between p-4 rounded-xl border-2 border-dashed hover:border-ai/40 hover:bg-ai/5 transition cursor-pointer">
-                        <div className="text-sm font-medium">{d}</div>
-                        <div className="text-xs text-ai font-medium">Upload</div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {step === 2 && (
-                  <div className="space-y-3">
-                    <div className="rounded-xl bg-muted/50 p-4 grid sm:grid-cols-2 gap-4 text-sm">
-                      <div><div className="text-muted-foreground text-xs">Amount</div><div className="font-semibold mt-1">{formatNPR(amount)}</div></div>
-                      <div><div className="text-muted-foreground text-xs">Term</div><div className="font-semibold mt-1">{term} months</div></div>
-                      <div><div className="text-muted-foreground text-xs">Purpose</div><div className="font-semibold mt-1">{purpose}</div></div>
-                      <div><div className="text-muted-foreground text-xs">Estimated EMI</div><div className="font-semibold mt-1">{formatNPR(emi)}</div></div>
-                    </div>
-                    <div className="rounded-xl border bg-gradient-to-br from-ai/10 to-transparent p-4">
-                      <div className="flex items-center gap-2"><Sparkles className="size-4 text-ai" /><div className="font-medium text-sm">Trust score impact</div></div>
-                      <div className="text-xs text-muted-foreground mt-1">This application will not affect your trust score. Successful repayment may improve it by +25 points.</div>
-                    </div>
-                  </div>
-                )}
               </motion.div>
             </AnimatePresence>
 
-            <div className="flex items-center justify-between mt-8">
-              <button disabled={step === 0} onClick={() => setStep(step - 1)}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border bg-surface disabled:opacity-40 hover:bg-muted text-sm">
-                <ArrowLeft className="size-4" /> Back
+            <div className="flex items-center justify-end mt-8">
+              <button className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-ai text-ai-foreground text-sm font-medium hover:opacity-90 shadow-elegant">
+                Submit Application <Check className="size-4" />
               </button>
-              {step < steps.length - 1 ? (
-                <button onClick={() => setStep(step + 1)}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 shadow-soft">
-                  Continue <ArrowRight className="size-4" />
-                </button>
-              ) : (
-                <button className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-ai text-ai-foreground text-sm font-medium hover:opacity-90 shadow-elegant">
-                  Submit Application <Check className="size-4" />
-                </button>
-              )}
             </div>
+
           </div>
 
           {/* Side EMI summary */}
