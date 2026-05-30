@@ -36,12 +36,13 @@ export function AppLayout({ role, children }: { role: "merchant" | "admin"; chil
   return (
     <div className="min-h-screen bg-surface-muted flex">
       <aside className="hidden lg:flex w-64 shrink-0 flex-col bg-sidebar text-sidebar-foreground sticky top-0 h-screen">
-        <div className="px-6 h-16 flex items-center gap-2 border-b border-sidebar-border">
+        <Link to="/" className="px-6 h-16 flex items-center gap-2 border-b border-sidebar-border hover:opacity-90 transition">
           <div className="size-8 rounded-lg bg-gradient-ai grid place-items-center">
             <Shield className="size-4 text-ai-foreground" />
           </div>
           <div className="font-semibold">Hami<span className="text-gradient-ai">sathi</span></div>
-        </div>
+        </Link>
+
         <div className="px-3 py-4 text-[11px] uppercase tracking-wider text-sidebar-foreground/60">
           {role === "merchant" ? "Merchant Portal" : "Risk Intelligence"}
         </div>
