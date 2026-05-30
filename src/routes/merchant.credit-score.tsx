@@ -64,6 +64,28 @@ function CreditScore() {
           ))}
         </div>
       </div>
+
+      <div className="rounded-2xl bg-surface p-6 border shadow-soft">
+        <h3 className="font-semibold">Recent Bill Payment Activity</h3>
+        <p className="text-xs text-muted-foreground">Live impact from the Pay Bills page</p>
+        <div className="mt-4 space-y-3">
+          {activities.length === 0 && (
+            <div className="text-xs text-muted-foreground rounded-lg border border-dashed p-4 text-center">No bill payments yet.</div>
+          )}
+          <AnimatePresence initial={false}>
+            {activities.map((a) => (
+              <motion.div key={a.id} initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }}
+                className="flex items-center justify-between rounded-lg border bg-muted/30 px-3 py-2">
+                <div className="flex items-center gap-3">
+                  <span className={`size-2 rounded-full ${a.delta >= 0 ? "bg-success" : "bg-destructive"}`} />
+                  <div className="text-sm">{a.text}</div>
+                </div>
+                <div className={`text-xs font-semibold ${a.delta >= 0 ? "text-success" : "text-destructive"}`}>{a.delta > 0 ? "+" : ""}{a.delta}</div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </div>
     </div>
   );
 }
