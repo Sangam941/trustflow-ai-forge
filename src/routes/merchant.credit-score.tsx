@@ -15,7 +15,7 @@ const componentWeights = [
   { name: "Financial", value: 30, color: "#6366f1" },
   { name: "Bill Payment", value: 20, color: "#10b981" },
   { name: "Transaction", value: 30, color: "#f59e0b" },
-  { name: "Business Stability", value: 30, color: "#ec4899" },
+  { name: "Business Stability", value: 20, color: "#ec4899" },
 ];
 
 function CreditScore() {
