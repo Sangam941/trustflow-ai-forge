@@ -11,11 +11,8 @@ const merchantNav = [
   { to: "/merchant/credit-score", label: "Credit Score", icon: Gauge },
   { to: "/merchant/pay-bills", label: "Pay Bills", icon: Receipt },
   { to: "/merchant/loan-application", label: "Apply for Loan", icon: FilePlus2 },
-  { to: "/merchant/loan-review", label: "Loan Review", icon: Eye },
-  { to: "/merchant/documents", label: "Documents", icon: FileText },
   { to: "/merchant/ai-coach", label: "AI Coach", icon: Sparkles },
   { to: "/merchant/profile", label: "Profile", icon: User },
-  { to: "/merchant/settings", label: "Settings", icon: Settings },
 ];
 
 const adminNav = [
