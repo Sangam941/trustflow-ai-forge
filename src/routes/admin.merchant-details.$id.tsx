@@ -39,7 +39,7 @@ function Details() {
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">
-        <div className="rounded-2xl bg-surface border shadow-soft p-6"><TrustScoreGauge score={m.trustScore} /></div>
+        <div className="rounded-2xl bg-surface border shadow-soft p-6"><TrustScoreGauge score={m.trustScore} max={1000} /></div>
         <div className="lg:col-span-2 rounded-2xl bg-surface border shadow-soft p-6">
           <h3 className="font-semibold">Trust Score History</h3>
           <div className="h-56 mt-3">

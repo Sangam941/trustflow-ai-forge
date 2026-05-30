@@ -1,5 +1,6 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
 import { currentMerchant } from "@/data/mockData";
+import { computeScore, type ScoreComponents } from "@/lib/scoring";
 
 export type BillStatus = "pending" | "paid" | "late";
 export interface Bill {
@@ -15,7 +16,7 @@ export interface Bill {
 export interface Activity {
   id: string;
   text: string;
-  delta: number; // +15, -10, 0
+  delta: number;
   at: string;
 }
 
@@ -32,16 +33,22 @@ interface Ctx {
   delta: number;
   bills: Bill[];
   activities: Activity[];
+  components: ScoreComponents;
   payBill: (id: string) => { delta: number; onTime: boolean } | null;
 }
 
 const ScoreCtx = createContext<Ctx | null>(null);
 
 export function ScoreProvider({ children }: { children: ReactNode }) {
-  const baseScore = currentMerchant.trustScore;
   const [delta, setDelta] = useState(0);
   const [bills, setBills] = useState<Bill[]>(initialBills);
   const [activities, setActivities] = useState<Activity[]>([]);
+
+  const components = useMemo(
+    () => computeScore(currentMerchant, bills, activities),
+    [bills, activities],
+  );
+  const baseScore = components.trustScore;
 
   const payBill = (id: string) => {
     const bill = bills.find(b => b.id === id);
@@ -49,11 +56,11 @@ export function ScoreProvider({ children }: { children: ReactNode }) {
     const today = new Date();
     const due = new Date(bill.dueDate);
     const onTime = today <= due;
-    const change = onTime ? 15 : -10;
+    const change = onTime ? 2 : -3;
     const paidDate = today.toISOString().split("T")[0];
 
     setBills(prev => prev.map(b => b.id === id ? { ...b, status: "paid", paidDate, onTime } : b));
-    setDelta(d => Math.max(-baseScore, Math.min(1000 - baseScore, d + change)));
+    setDelta(d => Math.max(-100, Math.min(100, d + change)));
     setActivities(prev => [
       { id: crypto.randomUUID(), text: `${bill.type} bill paid ${onTime ? "on time" : "late"}`, delta: change, at: today.toISOString() },
       ...prev,
@@ -61,9 +68,12 @@ export function ScoreProvider({ children }: { children: ReactNode }) {
     return { delta: change, onTime };
   };
 
-  const score = Math.max(0, Math.min(1000, baseScore + delta));
+  const score = Math.max(0, Math.min(100, baseScore + delta));
 
-  const value = useMemo(() => ({ baseScore, score, delta, bills, activities, payBill }), [baseScore, score, delta, bills, activities]);
+  const value = useMemo(
+    () => ({ baseScore, score, delta, bills, activities, components, payBill }),
+    [baseScore, score, delta, bills, activities, components],
+  );
   return <ScoreCtx.Provider value={value}>{children}</ScoreCtx.Provider>;
 }
 

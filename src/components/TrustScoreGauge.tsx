@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 
-
-export function TrustScoreGauge({ score }: { score: number }) {
-  const pct = Math.min(1, Math.max(0, score / 1000));
+export function TrustScoreGauge({ score, max = 100 }: { score: number; max?: number }) {
+  const pct = Math.min(1, Math.max(0, score / max));
   const radius = 90;
   const c = 2 * Math.PI * radius;
-  const offset = c * (1 - pct); // full-circle progress proportional to score
-  const label = score >= 720 ? "Excellent" : score >= 580 ? "Good" : score >= 460 ? "Fair" : "Needs Work";
+  const offset = c * (1 - pct);
+  const pctOf100 = pct * 100;
+  const label =
+    pctOf100 >= 72 ? "Excellent" :
+    pctOf100 >= 58 ? "Good" :
+    pctOf100 >= 46 ? "Fair" : "Needs Work";
   const color = "var(--success)";
 
   return (
@@ -26,7 +29,7 @@ export function TrustScoreGauge({ score }: { score: number }) {
         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4 }}
           className="text-5xl font-bold mt-1">{score}</motion.div>
         <div className="text-sm font-medium mt-1" style={{ color }}>{label}</div>
-        <div className="text-[11px] text-muted-foreground mt-0.5">{Math.round(pct * 100)}% · out of 1000</div>
+        <div className="text-[11px] text-muted-foreground mt-0.5">{Math.round(pctOf100)}% · out of {max}</div>
       </div>
     </div>
   );
