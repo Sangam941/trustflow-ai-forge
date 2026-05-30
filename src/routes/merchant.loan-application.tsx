@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Lock, TrendingUp } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { formatNPR } from "@/data/mockData";
 import { useScore } from "@/context/ScoreContext";
+import { getLoanTier, MIN_LOAN_SCORE } from "@/lib/scoring";
 
 
 export const Route = createFileRoute("/merchant/loan-application")({
@@ -14,26 +15,10 @@ export const Route = createFileRoute("/merchant/loan-application")({
 
 const steps = ["Loan Details"];
 
-type Tier = {
-  label: string;
-  maxLoan: number;
-  approval: number; // mid-range %
-  approvalLabel: string;
-  approvalRange: string;
-  incomeNote: string;
-};
-
-function getTier(score: number): Tier | null {
-  if (score >= 750) return { label: "Excellent", maxLoan: 150000, approval: 88, approvalLabel: "HIGH", approvalRange: "80–95%", incomeNote: "Stable income (Rs. 50k+)" };
-  if (score >= 650) return { label: "Good", maxLoan: 75000, approval: 65, approvalLabel: "MEDIUM", approvalRange: "50–80%", incomeNote: "Moderate income (Rs. 20k–50k)" };
-  if (score >= 550) return { label: "Fair", maxLoan: 40000, approval: 35, approvalLabel: "LOW", approvalRange: "20–50%", incomeNote: "Low / unstable income" };
-  return null;
-}
-
 function LoanApp() {
   const { score } = useScore();
-  const tier = getTier(score);
-  const MIN_SCORE = 550;
+  const tier = getLoanTier(score);
+  const MIN_SCORE = MIN_LOAN_SCORE;
 
   const [amount, setAmount] = useState(tier ? Math.min(50000, tier.maxLoan) : 50000);
   const [term, setTerm] = useState(12);
