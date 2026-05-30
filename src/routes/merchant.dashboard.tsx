@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { StatCard } from "@/components/StatCard";
 import { TrustScoreGauge } from "@/components/TrustScoreGauge";
-import { currentMerchant, financialTrend, billPayments, aiInsights, scoreBreakdown, formatNPR } from "@/data/mockData";
+import { currentMerchant, financialTrend, billPayments, aiInsights, formatNPR } from "@/data/mockData";
 import {
   ResponsiveContainer, AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, BarChart, Bar, Legend,
-  RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
 } from "recharts";
+
 import { Gauge, ShieldCheck, Wallet, TrendingUp, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
