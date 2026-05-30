@@ -13,11 +13,11 @@ const steps = ["Loan Details", "Business Info", "Financials", "Documents", "Revi
 
 function LoanApp() {
   const [step, setStep] = useState(0);
-  const [amount, setAmount] = useState(300000);
+  const [amount, setAmount] = useState(50000);
   const [term, setTerm] = useState(12);
   const [purpose, setPurpose] = useState("Inventory expansion");
 
-  const emi = Math.round((amount * (1 + 0.14 * (term / 12))) / term);
+  const emi = Math.round((amount * (1 + 0.18 * (term / 12))) / term);
 
   return (
     <div className="space-y-6">
@@ -51,10 +51,10 @@ function LoanApp() {
                     <div>
                       <label className="text-sm font-medium">Loan amount</label>
                       <div className="text-3xl font-semibold mt-1 text-gradient-ai">{formatNPR(amount)}</div>
-                      <input type="range" min={50000} max={2000000} step={10000} value={amount} onChange={e => setAmount(+e.target.value)}
+                      <input type="range" min={5000} max={100000} step={1000} value={amount} onChange={e => setAmount(+e.target.value)}
                         className="w-full mt-2 accent-[var(--ai)]" />
                       <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                        <span>Rs. 50,000</span><span>Rs. 20,00,000</span>
+                        <span>Rs. 5,000</span><span>Rs. 1,00,000</span>
                       </div>
                     </div>
                     <div className="grid sm:grid-cols-2 gap-4">
@@ -148,7 +148,7 @@ function LoanApp() {
             <div className="h-px bg-border my-2" />
             <Row k="Approval probability" v="87%" />
             <Row k="Recommended amount" v={formatNPR(Math.round(amount * 0.92))} />
-            <Row k="Interest rate" v="14% p.a." />
+            <Row k="Interest rate" v="18% p.a." />
             <Row k="Total payable" v={formatNPR(emi * term)} />
           </div>
         </div>
