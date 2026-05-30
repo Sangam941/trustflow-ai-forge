@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, ArrowLeft, ArrowRight, Sparkles, Lock, TrendingUp } from "lucide-react";
+import { Check, Sparkles, Lock, TrendingUp } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { formatNPR } from "@/data/mockData";
 import { useScore } from "@/context/ScoreContext";
