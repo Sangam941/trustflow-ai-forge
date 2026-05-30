@@ -24,6 +24,13 @@ import { Route as MerchantDocumentsRouteImport } from './routes/merchant.documen
 import { Route as MerchantDashboardRouteImport } from './routes/merchant.dashboard'
 import { Route as MerchantCreditScoreRouteImport } from './routes/merchant.credit-score'
 import { Route as MerchantAiCoachRouteImport } from './routes/merchant.ai-coach'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminRiskAnalysisRouteImport } from './routes/admin.risk-analysis'
+import { Route as AdminPortfolioRouteImport } from './routes/admin.portfolio'
+import { Route as AdminMerchantsRouteImport } from './routes/admin.merchants'
+import { Route as AdminLoanReviewsRouteImport } from './routes/admin.loan-reviews'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminMerchantDetailsIdRouteImport } from './routes/admin.merchant-details.$id'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -100,15 +107,56 @@ const MerchantAiCoachRoute = MerchantAiCoachRouteImport.update({
   path: '/ai-coach',
   getParentRoute: () => MerchantRoute,
 } as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRiskAnalysisRoute = AdminRiskAnalysisRouteImport.update({
+  id: '/risk-analysis',
+  path: '/risk-analysis',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPortfolioRoute = AdminPortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMerchantsRoute = AdminMerchantsRouteImport.update({
+  id: '/merchants',
+  path: '/merchants',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLoanReviewsRoute = AdminLoanReviewsRouteImport.update({
+  id: '/loan-reviews',
+  path: '/loan-reviews',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMerchantDetailsIdRoute = AdminMerchantDetailsIdRouteImport.update({
+  id: '/merchant-details/$id',
+  path: '/merchant-details/$id',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/features': typeof FeaturesRoute
   '/login': typeof LoginRoute
   '/merchant': typeof MerchantRouteWithChildren
   '/register': typeof RegisterRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/loan-reviews': typeof AdminLoanReviewsRoute
+  '/admin/merchants': typeof AdminMerchantsRoute
+  '/admin/portfolio': typeof AdminPortfolioRoute
+  '/admin/risk-analysis': typeof AdminRiskAnalysisRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/merchant/ai-coach': typeof MerchantAiCoachRoute
   '/merchant/credit-score': typeof MerchantCreditScoreRoute
   '/merchant/dashboard': typeof MerchantDashboardRoute
@@ -117,15 +165,22 @@ export interface FileRoutesByFullPath {
   '/merchant/loan-review': typeof MerchantLoanReviewRoute
   '/merchant/profile': typeof MerchantProfileRoute
   '/merchant/settings': typeof MerchantSettingsRoute
+  '/admin/merchant-details/$id': typeof AdminMerchantDetailsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/features': typeof FeaturesRoute
   '/login': typeof LoginRoute
   '/merchant': typeof MerchantRouteWithChildren
   '/register': typeof RegisterRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/loan-reviews': typeof AdminLoanReviewsRoute
+  '/admin/merchants': typeof AdminMerchantsRoute
+  '/admin/portfolio': typeof AdminPortfolioRoute
+  '/admin/risk-analysis': typeof AdminRiskAnalysisRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/merchant/ai-coach': typeof MerchantAiCoachRoute
   '/merchant/credit-score': typeof MerchantCreditScoreRoute
   '/merchant/dashboard': typeof MerchantDashboardRoute
@@ -134,16 +189,23 @@ export interface FileRoutesByTo {
   '/merchant/loan-review': typeof MerchantLoanReviewRoute
   '/merchant/profile': typeof MerchantProfileRoute
   '/merchant/settings': typeof MerchantSettingsRoute
+  '/admin/merchant-details/$id': typeof AdminMerchantDetailsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/features': typeof FeaturesRoute
   '/login': typeof LoginRoute
   '/merchant': typeof MerchantRouteWithChildren
   '/register': typeof RegisterRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/loan-reviews': typeof AdminLoanReviewsRoute
+  '/admin/merchants': typeof AdminMerchantsRoute
+  '/admin/portfolio': typeof AdminPortfolioRoute
+  '/admin/risk-analysis': typeof AdminRiskAnalysisRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/merchant/ai-coach': typeof MerchantAiCoachRoute
   '/merchant/credit-score': typeof MerchantCreditScoreRoute
   '/merchant/dashboard': typeof MerchantDashboardRoute
@@ -152,6 +214,7 @@ export interface FileRoutesById {
   '/merchant/loan-review': typeof MerchantLoanReviewRoute
   '/merchant/profile': typeof MerchantProfileRoute
   '/merchant/settings': typeof MerchantSettingsRoute
+  '/admin/merchant-details/$id': typeof AdminMerchantDetailsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -163,6 +226,12 @@ export interface FileRouteTypes {
     | '/login'
     | '/merchant'
     | '/register'
+    | '/admin/dashboard'
+    | '/admin/loan-reviews'
+    | '/admin/merchants'
+    | '/admin/portfolio'
+    | '/admin/risk-analysis'
+    | '/admin/settings'
     | '/merchant/ai-coach'
     | '/merchant/credit-score'
     | '/merchant/dashboard'
@@ -171,6 +240,7 @@ export interface FileRouteTypes {
     | '/merchant/loan-review'
     | '/merchant/profile'
     | '/merchant/settings'
+    | '/admin/merchant-details/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -180,6 +250,12 @@ export interface FileRouteTypes {
     | '/login'
     | '/merchant'
     | '/register'
+    | '/admin/dashboard'
+    | '/admin/loan-reviews'
+    | '/admin/merchants'
+    | '/admin/portfolio'
+    | '/admin/risk-analysis'
+    | '/admin/settings'
     | '/merchant/ai-coach'
     | '/merchant/credit-score'
     | '/merchant/dashboard'
@@ -188,6 +264,7 @@ export interface FileRouteTypes {
     | '/merchant/loan-review'
     | '/merchant/profile'
     | '/merchant/settings'
+    | '/admin/merchant-details/$id'
   id:
     | '__root__'
     | '/'
@@ -197,6 +274,12 @@ export interface FileRouteTypes {
     | '/login'
     | '/merchant'
     | '/register'
+    | '/admin/dashboard'
+    | '/admin/loan-reviews'
+    | '/admin/merchants'
+    | '/admin/portfolio'
+    | '/admin/risk-analysis'
+    | '/admin/settings'
     | '/merchant/ai-coach'
     | '/merchant/credit-score'
     | '/merchant/dashboard'
@@ -205,12 +288,13 @@ export interface FileRouteTypes {
     | '/merchant/loan-review'
     | '/merchant/profile'
     | '/merchant/settings'
+    | '/admin/merchant-details/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AdminRoute: typeof AdminRoute
+  AdminRoute: typeof AdminRouteWithChildren
   FeaturesRoute: typeof FeaturesRoute
   LoginRoute: typeof LoginRoute
   MerchantRoute: typeof MerchantRouteWithChildren
@@ -324,8 +408,79 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MerchantAiCoachRouteImport
       parentRoute: typeof MerchantRoute
     }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/risk-analysis': {
+      id: '/admin/risk-analysis'
+      path: '/risk-analysis'
+      fullPath: '/admin/risk-analysis'
+      preLoaderRoute: typeof AdminRiskAnalysisRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/portfolio': {
+      id: '/admin/portfolio'
+      path: '/portfolio'
+      fullPath: '/admin/portfolio'
+      preLoaderRoute: typeof AdminPortfolioRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/merchants': {
+      id: '/admin/merchants'
+      path: '/merchants'
+      fullPath: '/admin/merchants'
+      preLoaderRoute: typeof AdminMerchantsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/loan-reviews': {
+      id: '/admin/loan-reviews'
+      path: '/loan-reviews'
+      fullPath: '/admin/loan-reviews'
+      preLoaderRoute: typeof AdminLoanReviewsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/merchant-details/$id': {
+      id: '/admin/merchant-details/$id'
+      path: '/merchant-details/$id'
+      fullPath: '/admin/merchant-details/$id'
+      preLoaderRoute: typeof AdminMerchantDetailsIdRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
+
+interface AdminRouteChildren {
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminLoanReviewsRoute: typeof AdminLoanReviewsRoute
+  AdminMerchantsRoute: typeof AdminMerchantsRoute
+  AdminPortfolioRoute: typeof AdminPortfolioRoute
+  AdminRiskAnalysisRoute: typeof AdminRiskAnalysisRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminMerchantDetailsIdRoute: typeof AdminMerchantDetailsIdRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminLoanReviewsRoute: AdminLoanReviewsRoute,
+  AdminMerchantsRoute: AdminMerchantsRoute,
+  AdminPortfolioRoute: AdminPortfolioRoute,
+  AdminRiskAnalysisRoute: AdminRiskAnalysisRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminMerchantDetailsIdRoute: AdminMerchantDetailsIdRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 interface MerchantRouteChildren {
   MerchantAiCoachRoute: typeof MerchantAiCoachRoute
@@ -356,7 +511,7 @@ const MerchantRouteWithChildren = MerchantRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AdminRoute: AdminRoute,
+  AdminRoute: AdminRouteWithChildren,
   FeaturesRoute: FeaturesRoute,
   LoginRoute: LoginRoute,
   MerchantRoute: MerchantRouteWithChildren,
