@@ -12,7 +12,7 @@ export const Route = createFileRoute("/merchant/loan-application")({
   component: LoanApp,
 });
 
-const steps = ["Loan Details", "Business Info", "Financials", "Documents", "Review"];
+const steps = ["Loan Details", "Documents", "Review"];
 
 function LoanApp() {
   const [step, setStep] = useState(0);
@@ -122,26 +122,6 @@ function LoanApp() {
                   </>
                 )}
                 {step === 1 && (
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {["Business name","Category","Location","Years in business"].map(l => (
-                      <div key={l}>
-                        <label className="text-sm font-medium">{l}</label>
-                        <input className="mt-1.5 w-full h-11 px-3 rounded-lg border bg-surface outline-none" defaultValue={l === "Business name" ? "Shrestha Store" : l === "Category" ? "Grocery" : l === "Location" ? "Kathmandu" : "6"} />
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {step === 2 && (
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {["Monthly income","Monthly expense","Daily customers","Avg transaction"].map(l => (
-                      <div key={l}>
-                        <label className="text-sm font-medium">{l}</label>
-                        <input className="mt-1.5 w-full h-11 px-3 rounded-lg border bg-surface outline-none" defaultValue={l.includes("income") ? "180000" : l.includes("expense") ? "120000" : l.includes("customers") ? "85" : "450"} />
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {step === 3 && (
                   <div className="space-y-3">
                     {["Business registration","Citizenship ID","Last 3 months bank statement","Utility bill"].map(d => (
                       <div key={d} className="flex items-center justify-between p-4 rounded-xl border-2 border-dashed hover:border-ai/40 hover:bg-ai/5 transition cursor-pointer">
@@ -151,7 +131,7 @@ function LoanApp() {
                     ))}
                   </div>
                 )}
-                {step === 4 && (
+                {step === 2 && (
                   <div className="space-y-3">
                     <div className="rounded-xl bg-muted/50 p-4 grid sm:grid-cols-2 gap-4 text-sm">
                       <div><div className="text-muted-foreground text-xs">Amount</div><div className="font-semibold mt-1">{formatNPR(amount)}</div></div>

@@ -20,7 +20,7 @@ function Register() {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     login({ name: name || "Demo User", email: email || "demo@trustfund.ai", role });
-    navigate({ to: role === "admin" ? "/admin/dashboard" : "/merchant/dashboard" });
+    navigate({ to: role === "admin" ? "/admin/dashboard" : "/onboarding" });
   };
 
   return (
