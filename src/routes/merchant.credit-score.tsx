@@ -64,7 +64,7 @@ function CreditScore() {
                 </Pie>
                 <Tooltip
                   contentStyle={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12 }}
-                  formatter={(v: number) => `${v}%`}
+                  formatter={(v) => `${v}%`}
                 />
                 <Legend iconType="circle" wrapperStyle={{ fontSize: 12 }} />
               </PieChart>
