@@ -10,14 +10,25 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as MerchantRouteImport } from './routes/merchant'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MerchantLoanApplicationRouteImport } from './routes/merchant.loan-application'
+import { Route as MerchantDashboardRouteImport } from './routes/merchant.dashboard'
+import { Route as MerchantCreditScoreRouteImport } from './routes/merchant.credit-score'
+import { Route as MerchantAiCoachRouteImport } from './routes/merchant.ai-coach'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchantRoute = MerchantRouteImport.update({
+  id: '/merchant',
+  path: '/merchant',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -30,6 +41,11 @@ const FeaturesRoute = FeaturesRouteImport.update({
   path: '/features',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -40,42 +56,116 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MerchantLoanApplicationRoute = MerchantLoanApplicationRouteImport.update({
+  id: '/loan-application',
+  path: '/loan-application',
+  getParentRoute: () => MerchantRoute,
+} as any)
+const MerchantDashboardRoute = MerchantDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => MerchantRoute,
+} as any)
+const MerchantCreditScoreRoute = MerchantCreditScoreRouteImport.update({
+  id: '/credit-score',
+  path: '/credit-score',
+  getParentRoute: () => MerchantRoute,
+} as any)
+const MerchantAiCoachRoute = MerchantAiCoachRouteImport.update({
+  id: '/ai-coach',
+  path: '/ai-coach',
+  getParentRoute: () => MerchantRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/features': typeof FeaturesRoute
   '/login': typeof LoginRoute
+  '/merchant': typeof MerchantRouteWithChildren
   '/register': typeof RegisterRoute
+  '/merchant/ai-coach': typeof MerchantAiCoachRoute
+  '/merchant/credit-score': typeof MerchantCreditScoreRoute
+  '/merchant/dashboard': typeof MerchantDashboardRoute
+  '/merchant/loan-application': typeof MerchantLoanApplicationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/features': typeof FeaturesRoute
   '/login': typeof LoginRoute
+  '/merchant': typeof MerchantRouteWithChildren
   '/register': typeof RegisterRoute
+  '/merchant/ai-coach': typeof MerchantAiCoachRoute
+  '/merchant/credit-score': typeof MerchantCreditScoreRoute
+  '/merchant/dashboard': typeof MerchantDashboardRoute
+  '/merchant/loan-application': typeof MerchantLoanApplicationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/features': typeof FeaturesRoute
   '/login': typeof LoginRoute
+  '/merchant': typeof MerchantRouteWithChildren
   '/register': typeof RegisterRoute
+  '/merchant/ai-coach': typeof MerchantAiCoachRoute
+  '/merchant/credit-score': typeof MerchantCreditScoreRoute
+  '/merchant/dashboard': typeof MerchantDashboardRoute
+  '/merchant/loan-application': typeof MerchantLoanApplicationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/features' | '/login' | '/register'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/features'
+    | '/login'
+    | '/merchant'
+    | '/register'
+    | '/merchant/ai-coach'
+    | '/merchant/credit-score'
+    | '/merchant/dashboard'
+    | '/merchant/loan-application'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/features' | '/login' | '/register'
-  id: '__root__' | '/' | '/about' | '/features' | '/login' | '/register'
+  to:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/features'
+    | '/login'
+    | '/merchant'
+    | '/register'
+    | '/merchant/ai-coach'
+    | '/merchant/credit-score'
+    | '/merchant/dashboard'
+    | '/merchant/loan-application'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/features'
+    | '/login'
+    | '/merchant'
+    | '/register'
+    | '/merchant/ai-coach'
+    | '/merchant/credit-score'
+    | '/merchant/dashboard'
+    | '/merchant/loan-application'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRoute
   FeaturesRoute: typeof FeaturesRoute
   LoginRoute: typeof LoginRoute
+  MerchantRoute: typeof MerchantRouteWithChildren
   RegisterRoute: typeof RegisterRoute
 }
 
@@ -86,6 +176,13 @@ declare module '@tanstack/react-router' {
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merchant': {
+      id: '/merchant'
+      path: '/merchant'
+      fullPath: '/merchant'
+      preLoaderRoute: typeof MerchantRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -102,6 +199,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -116,14 +220,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/merchant/loan-application': {
+      id: '/merchant/loan-application'
+      path: '/loan-application'
+      fullPath: '/merchant/loan-application'
+      preLoaderRoute: typeof MerchantLoanApplicationRouteImport
+      parentRoute: typeof MerchantRoute
+    }
+    '/merchant/dashboard': {
+      id: '/merchant/dashboard'
+      path: '/dashboard'
+      fullPath: '/merchant/dashboard'
+      preLoaderRoute: typeof MerchantDashboardRouteImport
+      parentRoute: typeof MerchantRoute
+    }
+    '/merchant/credit-score': {
+      id: '/merchant/credit-score'
+      path: '/credit-score'
+      fullPath: '/merchant/credit-score'
+      preLoaderRoute: typeof MerchantCreditScoreRouteImport
+      parentRoute: typeof MerchantRoute
+    }
+    '/merchant/ai-coach': {
+      id: '/merchant/ai-coach'
+      path: '/ai-coach'
+      fullPath: '/merchant/ai-coach'
+      preLoaderRoute: typeof MerchantAiCoachRouteImport
+      parentRoute: typeof MerchantRoute
+    }
   }
 }
+
+interface MerchantRouteChildren {
+  MerchantAiCoachRoute: typeof MerchantAiCoachRoute
+  MerchantCreditScoreRoute: typeof MerchantCreditScoreRoute
+  MerchantDashboardRoute: typeof MerchantDashboardRoute
+  MerchantLoanApplicationRoute: typeof MerchantLoanApplicationRoute
+}
+
+const MerchantRouteChildren: MerchantRouteChildren = {
+  MerchantAiCoachRoute: MerchantAiCoachRoute,
+  MerchantCreditScoreRoute: MerchantCreditScoreRoute,
+  MerchantDashboardRoute: MerchantDashboardRoute,
+  MerchantLoanApplicationRoute: MerchantLoanApplicationRoute,
+}
+
+const MerchantRouteWithChildren = MerchantRoute._addFileChildren(
+  MerchantRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRoute,
   FeaturesRoute: FeaturesRoute,
   LoginRoute: LoginRoute,
+  MerchantRoute: MerchantRouteWithChildren,
   RegisterRoute: RegisterRoute,
 }
 export const routeTree = rootRouteImport
