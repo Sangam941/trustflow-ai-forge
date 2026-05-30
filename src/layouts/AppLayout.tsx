@@ -40,7 +40,7 @@ export function AppLayout({ role, children }: { role: "merchant" | "admin"; chil
           <div className="size-8 rounded-lg bg-gradient-ai grid place-items-center">
             <Shield className="size-4 text-ai-foreground" />
           </div>
-          <div className="font-semibold">TrustFund <span className="text-gradient-ai">AI</span></div>
+          <div className="font-semibold">Hami<span className="text-gradient-ai">sathi</span></div>
         </div>
         <div className="px-3 py-4 text-[11px] uppercase tracking-wider text-sidebar-foreground/60">
           {role === "merchant" ? "Merchant Portal" : "Risk Intelligence"}

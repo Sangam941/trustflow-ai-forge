@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/admin/settings")({
-  head: () => ({ meta: [{ title: "Settings — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "Settings — Hamisathi" }] }),
   component: () => (
     <div className="space-y-6 max-w-3xl">
       <h1 className="text-2xl font-semibold">Admin Settings</h1>

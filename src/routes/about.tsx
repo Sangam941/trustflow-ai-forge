@@ -2,14 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PublicLayout } from "@/layouts/PublicLayout";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({ meta: [{ title: "About — TrustFund AI" }, { name: "description", content: "Our mission: financial inclusion through alternative credit scoring." }] }),
+  head: () => ({ meta: [{ title: "About — Hamisathi" }, { name: "description", content: "Our mission: financial inclusion through alternative credit scoring." }] }),
   component: () => (
     <PublicLayout>
       <section className="mx-auto max-w-3xl px-6 py-24">
         <div className="text-xs uppercase tracking-wider text-ai font-semibold">About</div>
         <h1 className="mt-3 text-5xl font-bold tracking-tight">A new credit lens for emerging markets</h1>
         <p className="mt-6 text-lg text-muted-foreground">
-          Over 60% of Nepal's small merchants lack the formal credit history banks rely on. TrustFund AI replaces that absent paper trail with rich behavioral, transactional and community signals — giving lenders like eSewa the confidence to underwrite responsibly.
+          Over 60% of Nepal's small merchants lack the formal credit history banks rely on. Hamisathi replaces that absent paper trail with rich behavioral, transactional and community signals — giving lenders like eSewa the confidence to underwrite responsibly.
         </p>
         <div className="mt-12 grid md:grid-cols-3 gap-5">
           {[

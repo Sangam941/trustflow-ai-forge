@@ -12,7 +12,7 @@ const items = [
 ];
 
 export const Route = createFileRoute("/features")({
-  head: () => ({ meta: [{ title: "Features — TrustFund AI" }, { name: "description", content: "Alternative credit scoring, behavioral analysis, and explainable AI for lending." }] }),
+  head: () => ({ meta: [{ title: "Features — Hamisathi" }, { name: "description", content: "Alternative credit scoring, behavioral analysis, and explainable AI for lending." }] }),
   component: () => (
     <PublicLayout>
       <section className="mx-auto max-w-7xl px-6 py-24">

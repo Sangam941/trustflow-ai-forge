@@ -3,7 +3,7 @@ import { merchants, formatNPR } from "@/data/mockData";
 import { CheckCircle2, XCircle, Eye } from "lucide-react";
 
 export const Route = createFileRoute("/admin/loan-reviews")({
-  head: () => ({ meta: [{ title: "Loan Reviews — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "Loan Reviews — Hamisathi" }] }),
   component: () => {
     const pending = merchants.filter(m => m.loanStatus === "Pending" || m.loanStatus === "Under Review").slice(0, 12);
     return (

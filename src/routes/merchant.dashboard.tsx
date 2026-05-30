@@ -10,7 +10,7 @@ import { Gauge, ShieldCheck, Wallet, TrendingUp, Sparkles, ArrowRight } from "lu
 import { motion } from "framer-motion";
 
 export const Route = createFileRoute("/merchant/dashboard")({
-  head: () => ({ meta: [{ title: "Merchant Dashboard — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "Merchant Dashboard — Hamisathi" }] }),
   component: Dashboard,
 });
 

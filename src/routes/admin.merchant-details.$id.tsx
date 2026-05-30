@@ -5,7 +5,7 @@ import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tool
 import { ArrowLeft, CheckCircle2, XCircle, Eye, Sparkles, TrendingUp, AlertTriangle } from "lucide-react";
 
 export const Route = createFileRoute("/admin/merchant-details/$id")({
-  head: () => ({ meta: [{ title: "Merchant Details — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "Merchant Details — Hamisathi" }] }),
   loader: ({ params }) => {
     const m = getMerchantById(params.id);
     if (!m) throw notFound();

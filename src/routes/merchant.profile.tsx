@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { currentMerchant, formatNPR } from "@/data/mockData";
 
 export const Route = createFileRoute("/merchant/profile")({
-  head: () => ({ meta: [{ title: "Profile — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "Profile — Hamisathi" }] }),
   component: () => {
     const m = currentMerchant;
     return (

@@ -5,7 +5,7 @@ import { ResponsiveContainer, AreaChart, Area, CartesianGrid, XAxis, YAxis, Tool
 const COLORS = ["var(--chart-1)","var(--chart-2)","var(--chart-3)","var(--chart-4)","var(--chart-5)","var(--ai)"];
 
 export const Route = createFileRoute("/admin/portfolio")({
-  head: () => ({ meta: [{ title: "Portfolio — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "Portfolio — Hamisathi" }] }),
   component: () => (
     <div className="space-y-6">
       <div>
@@ -15,8 +15,8 @@ export const Route = createFileRoute("/admin/portfolio")({
 
       <div className="grid sm:grid-cols-4 gap-4">
         {[
-          ["Disbursed", "रू 14.2 Cr", "+8.1% MoM"],
-          ["Outstanding", "रू 9.8 Cr", "On schedule"],
+          ["Disbursed", "Rs. 14.2 Cr", "+8.1% MoM"],
+          ["Outstanding", "Rs. 9.8 Cr", "On schedule"],
           ["Recovery rate", "94.6%", "+0.4% MoM"],
           ["NPA", "1.8%", "-0.3% MoM"],
         ].map(([k, v, s]) => (

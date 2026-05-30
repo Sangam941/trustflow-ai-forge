@@ -5,7 +5,7 @@ import { Check, ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import { formatNPR } from "@/data/mockData";
 
 export const Route = createFileRoute("/merchant/loan-application")({
-  head: () => ({ meta: [{ title: "Loan Application — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "Loan Application — Hamisathi" }] }),
   component: LoanApp,
 });
 
@@ -54,7 +54,7 @@ function LoanApp() {
                       <input type="range" min={50000} max={2000000} step={10000} value={amount} onChange={e => setAmount(+e.target.value)}
                         className="w-full mt-2 accent-[var(--ai)]" />
                       <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                        <span>रू 50,000</span><span>रू 20,00,000</span>
+                        <span>Rs. 50,000</span><span>Rs. 20,00,000</span>
                       </div>
                     </div>
                     <div className="grid sm:grid-cols-2 gap-4">

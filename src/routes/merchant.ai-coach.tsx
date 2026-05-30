@@ -4,7 +4,7 @@ import { Sparkles, Send, User } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Route = createFileRoute("/merchant/ai-coach")({
-  head: () => ({ meta: [{ title: "AI Credit Coach — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "AI Credit Coach — Hamisathi" }] }),
   component: Coach,
 });
 
@@ -21,7 +21,7 @@ const replies: Record<string, string> = {
   "low": "Your score is actually strong at 847 (Excellent tier). The main drivers are excellent bill payment history (91/100) and stable cash flow over 9 consecutive months. The smallest factor holding it back is community trust at 74/100.",
   "847": "847 puts you in the top 18% of merchants on our platform. It reflects 9 months of positive cash flow, 91% on-time bill payments, and 6 years of business stability.",
   "eligibility": "Loan eligibility is calculated from five signals: monthly cash flow consistency (30%), trust score (25%), bill payment history (20%), business stability (15%), and community references (10%).",
-  "larger": "Yes — based on your current trust score and 12-month cash flow trend, you are eligible for loans up to रू 850,000. I would recommend starting with रू 450,000 to optimize your approval-probability-to-amount ratio.",
+  "larger": "Yes — based on your current trust score and 12-month cash flow trend, you are eligible for loans up to Rs. 850,000. I would recommend starting with Rs. 450,000 to optimize your approval-probability-to-amount ratio.",
 };
 
 function reply(q: string): string {

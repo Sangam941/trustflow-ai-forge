@@ -18,7 +18,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
             <div className="size-8 rounded-lg bg-gradient-ai grid place-items-center text-ai-foreground">
               <Shield className="size-4" />
             </div>
-            <span>TrustFund <span className="text-gradient-ai">AI</span></span>
+            <span>Hami<span className="text-gradient-ai">sathi</span></span>
           </Link>
           <nav className="hidden md:flex items-center gap-1">
             {nav.map(n => (
@@ -41,7 +41,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
       </motion.main>
       <footer className="border-t mt-20">
         <div className="mx-auto max-w-7xl px-6 py-10 text-sm text-muted-foreground flex flex-col md:flex-row gap-4 justify-between">
-          <div>© {new Date().getFullYear()} TrustFund AI — Alternative Credit Intelligence</div>
+          <div>© {new Date().getFullYear()} Hamisathi — Alternative Credit Intelligence</div>
           <div className="flex gap-4">
             <Link to="/about">About</Link>
             <Link to="/features">Features</Link>
