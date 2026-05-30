@@ -8,6 +8,7 @@ import {
 
 import { Gauge, ShieldCheck, Wallet, TrendingUp, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useScore } from "@/context/ScoreContext";
 
 export const Route = createFileRoute("/merchant/dashboard")({
   head: () => ({ meta: [{ title: "Merchant Dashboard — Hamisathi" }] }),
@@ -16,6 +17,7 @@ export const Route = createFileRoute("/merchant/dashboard")({
 
 function Dashboard() {
   const m = currentMerchant;
+  const { score } = useScore();
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-4">
@@ -29,7 +31,7 @@ function Dashboard() {
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard index={0} label="Trust Score" value={m.trustScore} delta={3} icon={<Gauge className="size-5" />} accent="ai" />
+        <StatCard index={0} label="Trust Score" value={score} delta={3} icon={<Gauge className="size-5" />} accent="ai" />
         <StatCard index={1} label="Risk Level" value={m.risk} icon={<ShieldCheck className="size-5" />} accent={m.risk === "Low" ? "success" : "warning"} />
         <StatCard index={2} label="Loan Eligibility" value={formatNPR(m.loanAmount)} delta={12} icon={<Wallet className="size-5" />} accent="default" />
         <StatCard index={3} label="Business Health" value="Strong" delta={5} icon={<TrendingUp className="size-5" />} accent="success" />
@@ -40,7 +42,7 @@ function Dashboard() {
           className="rounded-2xl bg-surface p-6 border shadow-soft">
           <h3 className="font-semibold">Trust Score</h3>
           <p className="text-xs text-muted-foreground">Updated 2 hours ago</p>
-          <div className="mt-2"><TrustScoreGauge score={m.trustScore} /></div>
+          <div className="mt-2"><TrustScoreGauge score={score} /></div>
           <div className="grid grid-cols-3 gap-2 mt-2 text-center">
             <div className="rounded-lg bg-muted/50 py-2">
               <div className="text-[10px] uppercase text-muted-foreground">Trend</div>

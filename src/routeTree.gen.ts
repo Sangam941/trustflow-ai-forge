@@ -18,6 +18,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MerchantSettingsRouteImport } from './routes/merchant.settings'
 import { Route as MerchantProfileRouteImport } from './routes/merchant.profile'
+import { Route as MerchantPayBillsRouteImport } from './routes/merchant.pay-bills'
 import { Route as MerchantLoanReviewRouteImport } from './routes/merchant.loan-review'
 import { Route as MerchantLoanApplicationRouteImport } from './routes/merchant.loan-application'
 import { Route as MerchantDocumentsRouteImport } from './routes/merchant.documents'
@@ -75,6 +76,11 @@ const MerchantSettingsRoute = MerchantSettingsRouteImport.update({
 const MerchantProfileRoute = MerchantProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => MerchantRoute,
+} as any)
+const MerchantPayBillsRoute = MerchantPayBillsRouteImport.update({
+  id: '/pay-bills',
+  path: '/pay-bills',
   getParentRoute: () => MerchantRoute,
 } as any)
 const MerchantLoanReviewRoute = MerchantLoanReviewRouteImport.update({
@@ -163,6 +169,7 @@ export interface FileRoutesByFullPath {
   '/merchant/documents': typeof MerchantDocumentsRoute
   '/merchant/loan-application': typeof MerchantLoanApplicationRoute
   '/merchant/loan-review': typeof MerchantLoanReviewRoute
+  '/merchant/pay-bills': typeof MerchantPayBillsRoute
   '/merchant/profile': typeof MerchantProfileRoute
   '/merchant/settings': typeof MerchantSettingsRoute
   '/admin/merchant-details/$id': typeof AdminMerchantDetailsIdRoute
@@ -187,6 +194,7 @@ export interface FileRoutesByTo {
   '/merchant/documents': typeof MerchantDocumentsRoute
   '/merchant/loan-application': typeof MerchantLoanApplicationRoute
   '/merchant/loan-review': typeof MerchantLoanReviewRoute
+  '/merchant/pay-bills': typeof MerchantPayBillsRoute
   '/merchant/profile': typeof MerchantProfileRoute
   '/merchant/settings': typeof MerchantSettingsRoute
   '/admin/merchant-details/$id': typeof AdminMerchantDetailsIdRoute
@@ -212,6 +220,7 @@ export interface FileRoutesById {
   '/merchant/documents': typeof MerchantDocumentsRoute
   '/merchant/loan-application': typeof MerchantLoanApplicationRoute
   '/merchant/loan-review': typeof MerchantLoanReviewRoute
+  '/merchant/pay-bills': typeof MerchantPayBillsRoute
   '/merchant/profile': typeof MerchantProfileRoute
   '/merchant/settings': typeof MerchantSettingsRoute
   '/admin/merchant-details/$id': typeof AdminMerchantDetailsIdRoute
@@ -238,6 +247,7 @@ export interface FileRouteTypes {
     | '/merchant/documents'
     | '/merchant/loan-application'
     | '/merchant/loan-review'
+    | '/merchant/pay-bills'
     | '/merchant/profile'
     | '/merchant/settings'
     | '/admin/merchant-details/$id'
@@ -262,6 +272,7 @@ export interface FileRouteTypes {
     | '/merchant/documents'
     | '/merchant/loan-application'
     | '/merchant/loan-review'
+    | '/merchant/pay-bills'
     | '/merchant/profile'
     | '/merchant/settings'
     | '/admin/merchant-details/$id'
@@ -286,6 +297,7 @@ export interface FileRouteTypes {
     | '/merchant/documents'
     | '/merchant/loan-application'
     | '/merchant/loan-review'
+    | '/merchant/pay-bills'
     | '/merchant/profile'
     | '/merchant/settings'
     | '/admin/merchant-details/$id'
@@ -364,6 +376,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/merchant/profile'
       preLoaderRoute: typeof MerchantProfileRouteImport
+      parentRoute: typeof MerchantRoute
+    }
+    '/merchant/pay-bills': {
+      id: '/merchant/pay-bills'
+      path: '/pay-bills'
+      fullPath: '/merchant/pay-bills'
+      preLoaderRoute: typeof MerchantPayBillsRouteImport
       parentRoute: typeof MerchantRoute
     }
     '/merchant/loan-review': {
@@ -489,6 +508,7 @@ interface MerchantRouteChildren {
   MerchantDocumentsRoute: typeof MerchantDocumentsRoute
   MerchantLoanApplicationRoute: typeof MerchantLoanApplicationRoute
   MerchantLoanReviewRoute: typeof MerchantLoanReviewRoute
+  MerchantPayBillsRoute: typeof MerchantPayBillsRoute
   MerchantProfileRoute: typeof MerchantProfileRoute
   MerchantSettingsRoute: typeof MerchantSettingsRoute
 }
@@ -500,6 +520,7 @@ const MerchantRouteChildren: MerchantRouteChildren = {
   MerchantDocumentsRoute: MerchantDocumentsRoute,
   MerchantLoanApplicationRoute: MerchantLoanApplicationRoute,
   MerchantLoanReviewRoute: MerchantLoanReviewRoute,
+  MerchantPayBillsRoute: MerchantPayBillsRoute,
   MerchantProfileRoute: MerchantProfileRoute,
   MerchantSettingsRoute: MerchantSettingsRoute,
 }
