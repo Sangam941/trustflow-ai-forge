@@ -148,7 +148,7 @@ function LoanApp() {
             <div className="h-px bg-border my-2" />
             <Row k="Approval probability" v="87%" />
             <Row k="Recommended amount" v={formatNPR(Math.round(amount * 0.92))} />
-            <Row k="Interest rate" v="14% p.a." />
+            <Row k="Interest rate" v="18% p.a." />
             <Row k="Total payable" v={formatNPR(emi * term)} />
           </div>
         </div>
