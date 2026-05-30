@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Sparkles, Send, User } from "lucide-react";
 import { motion } from "framer-motion";
 
+
 export const Route = createFileRoute("/merchant/ai-coach")({
   head: () => ({ meta: [{ title: "AI Credit Coach — Hamisathi" }] }),
   component: Coach,

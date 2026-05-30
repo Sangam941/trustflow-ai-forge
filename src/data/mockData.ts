@@ -1,5 +1,6 @@
 // Realistic dummy data for Hamisathi
 
+
 export type RiskLevel = "Low" | "Medium" | "High";
 export type LoanStatus = "Pending" | "Under Review" | "Approved" | "Rejected" | "Disbursed";
 

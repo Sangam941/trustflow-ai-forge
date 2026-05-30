@@ -5,7 +5,6 @@ import { currentMerchant, financialTrend, billPayments, aiInsights, formatNPR } 
 import {
   ResponsiveContainer, AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, BarChart, Bar, Legend,
 } from "recharts";
-
 import { Gauge, ShieldCheck, Wallet, TrendingUp, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 

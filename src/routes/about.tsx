@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PublicLayout } from "@/layouts/PublicLayout";
 
+
 export const Route = createFileRoute("/about")({
   head: () => ({ meta: [{ title: "About — Hamisathi" }, { name: "description", content: "Our mission: financial inclusion through alternative credit scoring." }] }),
   component: () => (

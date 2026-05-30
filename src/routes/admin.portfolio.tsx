@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { financialTrend, portfolioRiskByCategory } from "@/data/mockData";
 import { ResponsiveContainer, AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, PieChart, Pie, Cell, Legend } from "recharts";
 
+
 const COLORS = ["var(--chart-1)","var(--chart-2)","var(--chart-3)","var(--chart-4)","var(--chart-5)","var(--ai)"];
 
 export const Route = createFileRoute("/admin/portfolio")({

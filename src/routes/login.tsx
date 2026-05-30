@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Shield, ArrowRight } from "lucide-react";
 import { useAuth, type Role } from "@/context/AuthContext";
 
+
 export const Route = createFileRoute("/login")({
   head: () => ({ meta: [{ title: "Sign in — Hamisathi" }] }),
   component: Login,

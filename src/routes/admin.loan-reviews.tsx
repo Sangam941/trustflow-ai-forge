@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { merchants, formatNPR } from "@/data/mockData";
 import { CheckCircle2, XCircle, Eye } from "lucide-react";
 
+
 export const Route = createFileRoute("/admin/loan-reviews")({
   head: () => ({ meta: [{ title: "Loan Reviews — Hamisathi" }] }),
   component: () => {

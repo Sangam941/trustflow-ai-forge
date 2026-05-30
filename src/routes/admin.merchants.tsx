@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { merchants, formatNPR } from "@/data/mockData";
 import { Search } from "lucide-react";
 
+
 export const Route = createFileRoute("/admin/merchants")({
   head: () => ({ meta: [{ title: "Merchants — Hamisathi" }] }),
   component: MerchantsPage,

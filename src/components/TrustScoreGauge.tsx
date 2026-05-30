@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 
+
 export function TrustScoreGauge({ score }: { score: number }) {
   const pct = Math.min(1, Math.max(0, score / 1000));
   const radius = 90;

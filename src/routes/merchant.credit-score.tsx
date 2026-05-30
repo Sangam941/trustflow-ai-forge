@@ -4,6 +4,7 @@ import { currentMerchant, scoreBreakdown, trustScoreHistory } from "@/data/mockD
 import { LineChart, Line, ResponsiveContainer, CartesianGrid, XAxis, YAxis, Tooltip } from "recharts";
 import { motion } from "framer-motion";
 
+
 export const Route = createFileRoute("/merchant/credit-score")({
   head: () => ({ meta: [{ title: "Credit Score — Hamisathi" }] }),
   component: CreditScore,

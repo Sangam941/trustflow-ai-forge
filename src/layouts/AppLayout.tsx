@@ -32,6 +32,7 @@ export function AppLayout({ role, children }: { role: "merchant" | "admin"; chil
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const displayName = user?.name || (role === "admin" ? "eSewa Admin" : "Shrestha Store");
+  
 
   return (
     <div className="min-h-screen bg-surface-muted flex">

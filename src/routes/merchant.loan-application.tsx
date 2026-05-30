@@ -5,6 +5,7 @@ import { Check, ArrowLeft, ArrowRight, Sparkles, Lock, TrendingUp } from "lucide
 import { Link } from "@tanstack/react-router";
 import { formatNPR, currentMerchant } from "@/data/mockData";
 
+
 export const Route = createFileRoute("/merchant/loan-application")({
   head: () => ({ meta: [{ title: "Loan Application — Hamisathi" }] }),
   component: LoanApp,

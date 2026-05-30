@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Shield } from "lucide-react";
 import type { ReactNode } from "react";
 
+
 export function PublicLayout({ children }: { children: ReactNode }) {
   const { location } = useRouterState();
   const nav = [

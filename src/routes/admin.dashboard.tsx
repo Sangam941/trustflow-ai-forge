@@ -7,6 +7,7 @@ import {
   PieChart, Pie, Cell, BarChart, Bar,
 } from "recharts";
 
+
 export const Route = createFileRoute("/admin/dashboard")({
   head: () => ({ meta: [{ title: "Admin Dashboard — Hamisathi" }] }),
   component: AdminDash,

@@ -11,6 +11,7 @@ const items = [
   { icon: Sparkles, t: "Explainable AI", d: "Every decision shipped with a human-readable rationale for compliance." },
 ];
 
+
 export const Route = createFileRoute("/features")({
   head: () => ({ meta: [{ title: "Features — Hamisathi" }, { name: "description", content: "Alternative credit scoring, behavioral analysis, and explainable AI for lending." }] }),
   component: () => (

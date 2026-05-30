@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import { TrendingUp, TrendingDown } from "lucide-react";
 
+
 export function StatCard({
   label, value, delta, icon, accent = "default", index = 0,
 }: {

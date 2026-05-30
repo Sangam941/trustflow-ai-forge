@@ -4,6 +4,7 @@ type LovableErrorOptions = {
   severity?: "error" | "warning" | "info";
 };
 
+
 type LovableEvents = {
   captureException?: (
     error: unknown,

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { portfolioRiskByCategory, riskDistribution, approvalTrend } from "@/data/mockData";
 import { ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from "recharts";
 
+
 const PIE_COLORS = ["var(--chart-2)", "var(--chart-1)", "var(--chart-5)"];
 
 export const Route = createFileRoute("/admin/risk-analysis")({

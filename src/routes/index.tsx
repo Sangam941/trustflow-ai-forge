@@ -8,6 +8,7 @@ import { PublicLayout } from "@/layouts/PublicLayout";
 import { adminStats } from "@/data/mockData";
 import { AreaChart, Area, ResponsiveContainer, Tooltip } from "recharts";
 
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [

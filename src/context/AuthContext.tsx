@@ -16,4 +16,5 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   return <Ctx.Provider value={{ user, login: setUser, logout: () => setUser(null) }}>{children}</Ctx.Provider>;
 }
 
+
 export const useAuth = () => useContext(Ctx);

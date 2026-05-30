@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FileText, Upload, CheckCircle2 } from "lucide-react";
 
+
 export const Route = createFileRoute("/merchant/documents")({
   head: () => ({ meta: [{ title: "Documents — Hamisathi" }] }),
   component: () => {
