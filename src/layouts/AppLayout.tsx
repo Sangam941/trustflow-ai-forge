@@ -1,7 +1,7 @@
 import { Link, useRouterState, useNavigate } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  LayoutDashboard, User, Gauge, FileText, FilePlus2, Eye, Sparkles, Settings, LogOut, Bell, Search, Shield
+  LayoutDashboard, User, Gauge, FileText, FilePlus2, Eye, Sparkles, Settings, LogOut, Bell, Search, Shield, Receipt
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { useAuth } from "@/context/AuthContext";
@@ -9,6 +9,7 @@ import { useAuth } from "@/context/AuthContext";
 const merchantNav = [
   { to: "/merchant/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/merchant/credit-score", label: "Credit Score", icon: Gauge },
+  { to: "/merchant/pay-bills", label: "Pay Bills", icon: Receipt },
   { to: "/merchant/loan-application", label: "Apply for Loan", icon: FilePlus2 },
   { to: "/merchant/loan-review", label: "Loan Review", icon: Eye },
   { to: "/merchant/documents", label: "Documents", icon: FileText },
