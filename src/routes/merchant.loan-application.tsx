@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
-import { formatNPR } from "@/data/mockData";
+import { Check, ArrowLeft, ArrowRight, Sparkles, Lock, TrendingUp } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { formatNPR, currentMerchant } from "@/data/mockData";
 
 export const Route = createFileRoute("/merchant/loan-application")({
   head: () => ({ meta: [{ title: "Loan Application — Hamisathi" }] }),
@@ -18,6 +19,49 @@ function LoanApp() {
   const [purpose, setPurpose] = useState("Inventory expansion");
 
   const emi = Math.round((amount * (1 + 0.18 * (term / 12))) / term);
+
+  const MIN_SCORE = 700;
+  const score = currentMerchant.trustScore;
+  const eligible = score >= MIN_SCORE;
+  const pointsNeeded = Math.max(0, MIN_SCORE - score);
+
+  if (!eligible) {
+    return (
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-2xl font-semibold">Loan Application</h1>
+          <p className="text-sm text-muted-foreground">A minimum trust score of {MIN_SCORE} is required to apply.</p>
+        </div>
+        <div className="rounded-2xl border bg-gradient-to-br from-warning/10 via-surface to-surface shadow-soft p-8 text-center max-w-2xl mx-auto">
+          <div className="size-14 rounded-full bg-warning/15 grid place-items-center mx-auto">
+            <Lock className="size-7 text-warning" />
+          </div>
+          <h2 className="text-xl font-semibold mt-4">You're not eligible yet</h2>
+          <p className="text-sm text-muted-foreground mt-2">
+            Your current trust score is <span className="font-semibold text-foreground">{score}</span>. You need <span className="font-semibold text-foreground">{pointsNeeded}</span> more points to unlock loan applications.
+          </p>
+          <div className="mt-6 grid sm:grid-cols-2 gap-3 text-left">
+            <div className="rounded-xl border bg-surface p-4">
+              <div className="text-xs text-muted-foreground">Current score</div>
+              <div className="text-2xl font-bold mt-1">{score}</div>
+            </div>
+            <div className="rounded-xl border bg-surface p-4">
+              <div className="text-xs text-muted-foreground">Required</div>
+              <div className="text-2xl font-bold mt-1 text-gradient-ai">{MIN_SCORE}</div>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
+            <Link to="/merchant/ai-coach" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-ai text-ai-foreground text-sm font-medium hover:opacity-90 shadow-elegant">
+              <TrendingUp className="size-4" /> Improve with AI Coach
+            </Link>
+            <Link to="/merchant/credit-score" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border bg-surface text-sm font-medium hover:bg-muted">
+              View Credit Score
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
