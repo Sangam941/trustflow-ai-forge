@@ -95,22 +95,7 @@ function Dashboard() {
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">
-        <div className="rounded-2xl bg-surface p-6 border shadow-soft">
-          <h3 className="font-semibold">Score Breakdown</h3>
-          <p className="text-xs text-muted-foreground">Radar of all 5 components</p>
-          <div className="h-64 mt-2">
-            <ResponsiveContainer>
-              <RadarChart data={scoreBreakdown}>
-                <PolarGrid stroke="var(--border)" />
-                <PolarAngleAxis dataKey="name" tick={{ fill: "var(--muted-foreground)", fontSize: 11 }} />
-                <PolarRadiusAxis tick={false} axisLine={false} />
-                <Radar dataKey="value" stroke="var(--ai)" fill="var(--ai)" fillOpacity={0.35} />
-              </RadarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        <div className="rounded-2xl bg-surface p-6 border shadow-soft">
+        <div className="rounded-2xl bg-surface p-6 border shadow-soft lg:col-span-2">
           <h3 className="font-semibold">Bill Payment Analysis</h3>
           <p className="text-xs text-muted-foreground">On-time vs late vs missed</p>
           <div className="h-64 mt-2">
@@ -128,6 +113,7 @@ function Dashboard() {
             </ResponsiveContainer>
           </div>
         </div>
+
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           className="rounded-2xl p-6 border shadow-soft bg-gradient-to-br from-ai/10 via-surface to-surface">
