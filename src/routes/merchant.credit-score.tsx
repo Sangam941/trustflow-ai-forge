@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TrustScoreGauge } from "@/components/TrustScoreGauge";
-import { scoreBreakdown } from "@/data/mockData";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScore } from "@/context/ScoreContext";
@@ -19,8 +18,13 @@ const componentWeights = [
 ];
 
 function CreditScore() {
-  const { score, delta, activities } = useScore();
-  const visibleBreakdown = scoreBreakdown.filter(s => s.name !== "Community Trust");
+  const { score, delta, activities, components } = useScore();
+  const visibleBreakdown = [
+    { name: "Financial", value: components.financial },
+    { name: "Bill Payment", value: components.billPayment },
+    { name: "Transaction", value: components.transaction },
+    { name: "Business Stability", value: components.businessStability },
+  ];
 
   return (
     <div className="space-y-6">
