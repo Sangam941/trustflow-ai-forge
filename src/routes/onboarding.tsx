@@ -28,7 +28,7 @@ function Onboarding() {
   const [customers, setCustomers] = useState("");
   const [avgTxn, setAvgTxn] = useState("");
 
-  const stepLabels = ["Business Details", "Financials"];
+  const stepLabels = ["Business Details", "Monthly Income"];
 
   const next = (e: React.FormEvent) => {
     e.preventDefault();
