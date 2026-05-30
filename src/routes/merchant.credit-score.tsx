@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TrustScoreGauge } from "@/components/TrustScoreGauge";
-import { currentMerchant, scoreBreakdown, trustScoreHistory } from "@/data/mockData";
+import { scoreBreakdown, trustScoreHistory } from "@/data/mockData";
 import { LineChart, Line, ResponsiveContainer, CartesianGrid, XAxis, YAxis, Tooltip } from "recharts";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useScore } from "@/context/ScoreContext";
 
 export const Route = createFileRoute("/merchant/credit-score")({
   head: () => ({ meta: [{ title: "Credit Score — Hamisathi" }] }),
@@ -10,16 +11,24 @@ export const Route = createFileRoute("/merchant/credit-score")({
 });
 
 function CreditScore() {
+  const { score, delta, activities } = useScore();
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold">Your Credit Score</h1>
-        <p className="text-sm text-muted-foreground">Detailed breakdown of every signal feeding your trust score.</p>
+      <div className="flex items-center justify-between flex-wrap gap-3">
+        <div>
+          <h1 className="text-2xl font-semibold">Your Credit Score</h1>
+          <p className="text-sm text-muted-foreground">Detailed breakdown of every signal feeding your trust score.</p>
+        </div>
+        {delta !== 0 && (
+          <div className={`text-xs px-3 py-1.5 rounded-full border ${delta > 0 ? "bg-success/10 text-success border-success/30" : "bg-destructive/10 text-destructive border-destructive/30"}`}>
+            Bill payment impact: <span className="font-semibold">{delta > 0 ? "+" : ""}{delta}</span>
+          </div>
+        )}
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">
         <div className="rounded-2xl bg-surface p-6 border shadow-soft">
-          <TrustScoreGauge score={currentMerchant.trustScore} />
+          <TrustScoreGauge score={score} />
         </div>
 
         <div className="rounded-2xl bg-surface p-6 border shadow-soft lg:col-span-2">
