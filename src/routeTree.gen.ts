@@ -16,7 +16,11 @@ import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MerchantSettingsRouteImport } from './routes/merchant.settings'
+import { Route as MerchantProfileRouteImport } from './routes/merchant.profile'
+import { Route as MerchantLoanReviewRouteImport } from './routes/merchant.loan-review'
 import { Route as MerchantLoanApplicationRouteImport } from './routes/merchant.loan-application'
+import { Route as MerchantDocumentsRouteImport } from './routes/merchant.documents'
 import { Route as MerchantDashboardRouteImport } from './routes/merchant.dashboard'
 import { Route as MerchantCreditScoreRouteImport } from './routes/merchant.credit-score'
 import { Route as MerchantAiCoachRouteImport } from './routes/merchant.ai-coach'
@@ -56,9 +60,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MerchantSettingsRoute = MerchantSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => MerchantRoute,
+} as any)
+const MerchantProfileRoute = MerchantProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => MerchantRoute,
+} as any)
+const MerchantLoanReviewRoute = MerchantLoanReviewRouteImport.update({
+  id: '/loan-review',
+  path: '/loan-review',
+  getParentRoute: () => MerchantRoute,
+} as any)
 const MerchantLoanApplicationRoute = MerchantLoanApplicationRouteImport.update({
   id: '/loan-application',
   path: '/loan-application',
+  getParentRoute: () => MerchantRoute,
+} as any)
+const MerchantDocumentsRoute = MerchantDocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
   getParentRoute: () => MerchantRoute,
 } as any)
 const MerchantDashboardRoute = MerchantDashboardRouteImport.update({
@@ -88,7 +112,11 @@ export interface FileRoutesByFullPath {
   '/merchant/ai-coach': typeof MerchantAiCoachRoute
   '/merchant/credit-score': typeof MerchantCreditScoreRoute
   '/merchant/dashboard': typeof MerchantDashboardRoute
+  '/merchant/documents': typeof MerchantDocumentsRoute
   '/merchant/loan-application': typeof MerchantLoanApplicationRoute
+  '/merchant/loan-review': typeof MerchantLoanReviewRoute
+  '/merchant/profile': typeof MerchantProfileRoute
+  '/merchant/settings': typeof MerchantSettingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -101,7 +129,11 @@ export interface FileRoutesByTo {
   '/merchant/ai-coach': typeof MerchantAiCoachRoute
   '/merchant/credit-score': typeof MerchantCreditScoreRoute
   '/merchant/dashboard': typeof MerchantDashboardRoute
+  '/merchant/documents': typeof MerchantDocumentsRoute
   '/merchant/loan-application': typeof MerchantLoanApplicationRoute
+  '/merchant/loan-review': typeof MerchantLoanReviewRoute
+  '/merchant/profile': typeof MerchantProfileRoute
+  '/merchant/settings': typeof MerchantSettingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -115,7 +147,11 @@ export interface FileRoutesById {
   '/merchant/ai-coach': typeof MerchantAiCoachRoute
   '/merchant/credit-score': typeof MerchantCreditScoreRoute
   '/merchant/dashboard': typeof MerchantDashboardRoute
+  '/merchant/documents': typeof MerchantDocumentsRoute
   '/merchant/loan-application': typeof MerchantLoanApplicationRoute
+  '/merchant/loan-review': typeof MerchantLoanReviewRoute
+  '/merchant/profile': typeof MerchantProfileRoute
+  '/merchant/settings': typeof MerchantSettingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -130,7 +166,11 @@ export interface FileRouteTypes {
     | '/merchant/ai-coach'
     | '/merchant/credit-score'
     | '/merchant/dashboard'
+    | '/merchant/documents'
     | '/merchant/loan-application'
+    | '/merchant/loan-review'
+    | '/merchant/profile'
+    | '/merchant/settings'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -143,7 +183,11 @@ export interface FileRouteTypes {
     | '/merchant/ai-coach'
     | '/merchant/credit-score'
     | '/merchant/dashboard'
+    | '/merchant/documents'
     | '/merchant/loan-application'
+    | '/merchant/loan-review'
+    | '/merchant/profile'
+    | '/merchant/settings'
   id:
     | '__root__'
     | '/'
@@ -156,7 +200,11 @@ export interface FileRouteTypes {
     | '/merchant/ai-coach'
     | '/merchant/credit-score'
     | '/merchant/dashboard'
+    | '/merchant/documents'
     | '/merchant/loan-application'
+    | '/merchant/loan-review'
+    | '/merchant/profile'
+    | '/merchant/settings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -220,11 +268,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/merchant/settings': {
+      id: '/merchant/settings'
+      path: '/settings'
+      fullPath: '/merchant/settings'
+      preLoaderRoute: typeof MerchantSettingsRouteImport
+      parentRoute: typeof MerchantRoute
+    }
+    '/merchant/profile': {
+      id: '/merchant/profile'
+      path: '/profile'
+      fullPath: '/merchant/profile'
+      preLoaderRoute: typeof MerchantProfileRouteImport
+      parentRoute: typeof MerchantRoute
+    }
+    '/merchant/loan-review': {
+      id: '/merchant/loan-review'
+      path: '/loan-review'
+      fullPath: '/merchant/loan-review'
+      preLoaderRoute: typeof MerchantLoanReviewRouteImport
+      parentRoute: typeof MerchantRoute
+    }
     '/merchant/loan-application': {
       id: '/merchant/loan-application'
       path: '/loan-application'
       fullPath: '/merchant/loan-application'
       preLoaderRoute: typeof MerchantLoanApplicationRouteImport
+      parentRoute: typeof MerchantRoute
+    }
+    '/merchant/documents': {
+      id: '/merchant/documents'
+      path: '/documents'
+      fullPath: '/merchant/documents'
+      preLoaderRoute: typeof MerchantDocumentsRouteImport
       parentRoute: typeof MerchantRoute
     }
     '/merchant/dashboard': {
@@ -255,14 +331,22 @@ interface MerchantRouteChildren {
   MerchantAiCoachRoute: typeof MerchantAiCoachRoute
   MerchantCreditScoreRoute: typeof MerchantCreditScoreRoute
   MerchantDashboardRoute: typeof MerchantDashboardRoute
+  MerchantDocumentsRoute: typeof MerchantDocumentsRoute
   MerchantLoanApplicationRoute: typeof MerchantLoanApplicationRoute
+  MerchantLoanReviewRoute: typeof MerchantLoanReviewRoute
+  MerchantProfileRoute: typeof MerchantProfileRoute
+  MerchantSettingsRoute: typeof MerchantSettingsRoute
 }
 
 const MerchantRouteChildren: MerchantRouteChildren = {
   MerchantAiCoachRoute: MerchantAiCoachRoute,
   MerchantCreditScoreRoute: MerchantCreditScoreRoute,
   MerchantDashboardRoute: MerchantDashboardRoute,
+  MerchantDocumentsRoute: MerchantDocumentsRoute,
   MerchantLoanApplicationRoute: MerchantLoanApplicationRoute,
+  MerchantLoanReviewRoute: MerchantLoanReviewRoute,
+  MerchantProfileRoute: MerchantProfileRoute,
+  MerchantSettingsRoute: MerchantSettingsRoute,
 }
 
 const MerchantRouteWithChildren = MerchantRoute._addFileChildren(
