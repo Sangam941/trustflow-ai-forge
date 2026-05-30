@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TrustScoreGauge } from "@/components/TrustScoreGauge";
-import { scoreBreakdown, trustScoreHistory } from "@/data/mockData";
-import { LineChart, Line, ResponsiveContainer, CartesianGrid, XAxis, YAxis, Tooltip } from "recharts";
+import { scoreBreakdown } from "@/data/mockData";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScore } from "@/context/ScoreContext";
 
@@ -11,8 +11,17 @@ export const Route = createFileRoute("/merchant/credit-score")({
   component: CreditScore,
 });
 
+const componentWeights = [
+  { name: "Financial", value: 30, color: "#6366f1" },
+  { name: "Bill Payment", value: 20, color: "#10b981" },
+  { name: "Transaction", value: 30, color: "#f59e0b" },
+  { name: "Business Stability", value: 30, color: "#ec4899" },
+];
+
 function CreditScore() {
   const { score, delta, activities } = useScore();
+  const visibleBreakdown = scoreBreakdown.filter(s => s.name !== "Community Trust");
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-3">
@@ -33,16 +42,32 @@ function CreditScore() {
         </div>
 
         <div className="rounded-2xl bg-surface p-6 border shadow-soft lg:col-span-2">
-          <h3 className="font-semibold">12-Month Trust Score History</h3>
-          <div className="h-64 mt-3">
+          <h3 className="font-semibold">Score Composition</h3>
+          <p className="text-xs text-muted-foreground">How each component contributes to your overall trust score</p>
+          <div className="h-72 mt-3">
             <ResponsiveContainer>
-              <LineChart data={trustScoreHistory}>
-                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-                <XAxis dataKey="month" stroke="var(--muted-foreground)" fontSize={11} />
-                <YAxis stroke="var(--muted-foreground)" fontSize={11} domain={[500, 900]} />
-                <Tooltip contentStyle={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12 }} />
-                <Line dataKey="score" stroke="var(--ai)" strokeWidth={3} dot={{ r: 4, fill: "var(--ai)" }} />
-              </LineChart>
+              <PieChart>
+                <Pie
+                  data={componentWeights}
+                  dataKey="value"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={55}
+                  outerRadius={100}
+                  paddingAngle={3}
+                  label={(entry) => `${entry.value}%`}
+                >
+                  {componentWeights.map((e) => (
+                    <Cell key={e.name} fill={e.color} stroke="var(--surface)" strokeWidth={2} />
+                  ))}
+                </Pie>
+                <Tooltip
+                  contentStyle={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12 }}
+                  formatter={(v) => `${v}%`}
+                />
+                <Legend iconType="circle" wrapperStyle={{ fontSize: 12 }} />
+              </PieChart>
             </ResponsiveContainer>
           </div>
         </div>
@@ -51,7 +76,7 @@ function CreditScore() {
       <div className="rounded-2xl bg-surface p-6 border shadow-soft">
         <h3 className="font-semibold">Score Components</h3>
         <div className="mt-4 space-y-4">
-          {scoreBreakdown.map((s, i) => (
+          {visibleBreakdown.map((s, i) => (
             <motion.div key={s.name} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}>
               <div className="flex items-center justify-between text-sm mb-1.5">
                 <span className="font-medium">{s.name}</span>
