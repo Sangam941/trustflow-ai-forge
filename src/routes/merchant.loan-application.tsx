@@ -3,7 +3,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, ArrowLeft, ArrowRight, Sparkles, Lock, TrendingUp } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import { formatNPR, currentMerchant } from "@/data/mockData";
+import { formatNPR } from "@/data/mockData";
+import { useScore } from "@/context/ScoreContext";
 
 
 export const Route = createFileRoute("/merchant/loan-application")({
@@ -22,7 +23,7 @@ function LoanApp() {
   const emi = Math.round((amount * (1 + 0.18 * (term / 12))) / term);
 
   const MIN_SCORE = 700;
-  const score = currentMerchant.trustScore;
+  const { score } = useScore();
   const eligible = score >= MIN_SCORE;
   const pointsNeeded = Math.max(0, MIN_SCORE - score);
 

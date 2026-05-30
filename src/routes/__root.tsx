@@ -6,6 +6,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AuthProvider } from "@/context/AuthContext";
+import { ScoreProvider } from "@/context/ScoreContext";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -77,7 +79,10 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <Outlet />
+        <ScoreProvider>
+          <Outlet />
+          <Toaster position="top-right" richColors />
+        </ScoreProvider>
       </AuthProvider>
     </QueryClientProvider>
   );
