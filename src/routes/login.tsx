@@ -5,7 +5,7 @@ import { Shield, ArrowRight } from "lucide-react";
 import { useAuth, type Role } from "@/context/AuthContext";
 
 export const Route = createFileRoute("/login")({
-  head: () => ({ meta: [{ title: "Sign in — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "Sign in — Hamisathi" }] }),
   component: Login,
 });
 
@@ -27,13 +27,13 @@ function Login() {
       <div className="hidden md:flex bg-gradient-navy text-navy-foreground p-12 flex-col justify-between relative overflow-hidden">
         <Link to="/" className="flex items-center gap-2 font-semibold relative z-10">
           <div className="size-8 rounded-lg bg-gradient-ai grid place-items-center"><Shield className="size-4" /></div>
-          TrustFund <span className="text-gradient-ai">AI</span>
+          Hami<span className="text-gradient-ai">sathi</span>
         </Link>
         <div className="relative z-10">
           <h1 className="text-4xl font-bold leading-tight">Welcome back to the future of credit.</h1>
           <p className="mt-3 text-navy-foreground/70 max-w-md">Sign in to manage your trust score, applications, and AI-driven lending insights.</p>
         </div>
-        <div className="text-xs text-navy-foreground/50 relative z-10">© TrustFund AI · Alternative Credit Intelligence</div>
+        <div className="text-xs text-navy-foreground/50 relative z-10">© Hamisathi · Alternative Credit Intelligence</div>
         <div className="absolute -bottom-20 -right-20 size-96 rounded-full bg-ai/30 blur-3xl" />
         <div className="absolute top-20 -left-10 size-60 rounded-full bg-chart-3/30 blur-3xl" />
       </div>

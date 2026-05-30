@@ -5,7 +5,7 @@ import { Shield, ArrowRight, Check } from "lucide-react";
 import { useAuth, type Role } from "@/context/AuthContext";
 
 export const Route = createFileRoute("/register")({
-  head: () => ({ meta: [{ title: "Create account — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "Create account — Hamisathi" }] }),
   component: Register,
 });
 
@@ -65,7 +65,7 @@ function Register() {
       <div className="hidden md:flex bg-gradient-navy text-navy-foreground p-12 flex-col justify-between relative overflow-hidden order-1 md:order-2">
         <Link to="/" className="flex items-center gap-2 font-semibold relative z-10">
           <div className="size-8 rounded-lg bg-gradient-ai grid place-items-center"><Shield className="size-4" /></div>
-          TrustFund <span className="text-gradient-ai">AI</span>
+          Hami<span className="text-gradient-ai">sathi</span>
         </Link>
         <div className="relative z-10 space-y-5">
           <h1 className="text-4xl font-bold leading-tight">Join thousands building credit history with AI.</h1>
@@ -75,7 +75,7 @@ function Register() {
             ))}
           </ul>
         </div>
-        <div className="text-xs text-navy-foreground/50 relative z-10">© TrustFund AI · Alternative Credit Intelligence</div>
+        <div className="text-xs text-navy-foreground/50 relative z-10">© Hamisathi · Alternative Credit Intelligence</div>
         <div className="absolute -top-20 -right-20 size-96 rounded-full bg-ai/30 blur-3xl" />
       </div>
     </div>

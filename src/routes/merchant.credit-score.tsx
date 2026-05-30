@@ -5,7 +5,7 @@ import { LineChart, Line, ResponsiveContainer, CartesianGrid, XAxis, YAxis, Tool
 import { motion } from "framer-motion";
 
 export const Route = createFileRoute("/merchant/credit-score")({
-  head: () => ({ meta: [{ title: "Credit Score — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "Credit Score — Hamisathi" }] }),
   component: CreditScore,
 });
 

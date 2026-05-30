@@ -5,7 +5,7 @@ import { ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area, CartesianGri
 const PIE_COLORS = ["var(--chart-2)", "var(--chart-1)", "var(--chart-5)"];
 
 export const Route = createFileRoute("/admin/risk-analysis")({
-  head: () => ({ meta: [{ title: "Risk Analysis — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "Risk Analysis — Hamisathi" }] }),
   component: () => (
     <div className="space-y-6">
       <div>

@@ -45,9 +45,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "TrustFund AI — Alternative Credit Intelligence" },
+      { title: "Hamisathi — Alternative Credit Intelligence" },
       { name: "description", content: "AI-powered alternative credit scoring platform for Nepal's unbanked and underbanked merchants." },
-      { property: "og:title", content: "TrustFund AI" },
+      { property: "og:title", content: "Hamisathi" },
       { property: "og:description", content: "Financial inclusion through AI — alternative credit scoring for merchants." },
       { property: "og:type", content: "website" },
     ],

@@ -11,7 +11,7 @@ import { AreaChart, Area, ResponsiveContainer, Tooltip } from "recharts";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "TrustFund AI — Financial Inclusion Through AI" },
+      { title: "Hamisathi — Financial Inclusion Through AI" },
       { name: "description", content: "Alternative credit scoring platform for Nepal's unbanked merchants. Powered by behavioral and alternative financial data." },
     ],
   }),
@@ -122,7 +122,7 @@ function Landing() {
                 {[
                   { l: "Approval", v: "92%", c: "text-success" },
                   { l: "Risk", v: "Low", c: "text-success" },
-                  { l: "Eligible", v: "रू 450k", c: "text-foreground" },
+                  { l: "Eligible", v: "Rs. 450k", c: "text-foreground" },
                 ].map(s => (
                   <div key={s.l} className="rounded-xl bg-muted/50 p-3">
                     <div className="text-[10px] uppercase text-muted-foreground">{s.l}</div>

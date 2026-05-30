@@ -3,7 +3,7 @@ import { currentMerchant, formatNPR, scoreBreakdown } from "@/data/mockData";
 import { Sparkles, CheckCircle2, FileText } from "lucide-react";
 
 export const Route = createFileRoute("/merchant/loan-review")({
-  head: () => ({ meta: [{ title: "Loan Review — TrustFund AI" }] }),
+  head: () => ({ meta: [{ title: "Loan Review — Hamisathi" }] }),
   component: Review,
 });
 

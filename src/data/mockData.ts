@@ -1,4 +1,4 @@
-// Realistic dummy data for TrustFund AI
+// Realistic dummy data for Hamisathi
 
 export type RiskLevel = "Low" | "Medium" | "High";
 export type LoanStatus = "Pending" | "Under Review" | "Approved" | "Rejected" | "Disbursed";
@@ -151,5 +151,5 @@ export function getMerchantById(id: string) {
 }
 
 export function formatNPR(n: number) {
-  return "रू " + n.toLocaleString("en-IN");
+  return "Rs. " + n.toLocaleString("en-IN");
 }
